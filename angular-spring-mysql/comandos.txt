@@ -1,0 +1,9 @@
+package en maven para spring
+npm run build --prod en angular
+
+docker-compose build para ver si van bien
+docker-compose up front
+si ejecutas spring desde vsc ya deberia de funcionar
+docker-compose up Usuarios-database en otra ventana
+docker-compose up Gestion-API en otra ventana
+todo de una vez: docker-compose up

@@ -1,0 +1,80 @@
+version: '3.7'
+volumes:
+  kong_data: {}
+  users_data: {}
+networks:
+  #Red interna para comunicar los servicios (“Services on the same network can communicate with each other using their name”)
+  kong-net:
+services:
+  
+
+  Auth-API:
+    image: auth-api-image
+    build:
+      context: ./auth-API
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8081:8080
+    networks:
+      # Networks to join 
+      - kong-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://Base-datos:3306/Usuarios?createDatabaseIfNotExist=true
+    depends_on:
+      - Base-datos
+
+  Usuarios-API:
+    image: usuarios-api-image
+    build:
+      context: ./usuarios-API
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8082:8080
+    networks:
+      # Networks to join 
+      - kong-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://Base-datos:3306/Usuarios?createDatabaseIfNotExist=true
+    depends_on:
+      - Base-datos
+
+  Reservas-API:
+    image: reservas-api-image
+    build:
+      context: ./reservas-API
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8083:8080
+    networks:
+      # Networks to join 
+      - kong-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://Base-datos:3306/Reservas?createDatabaseIfNotExist=true
+    depends_on:
+      - Base-datos
+
+  
+
+  Base-datos:
+    image: mysql #Usamos imagen del respositorio ya creada
+    hostname: Base-datos
+    cap_add:
+      - SYS_NICE
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    networks:
+      - kong-net
+    volumes:
+      - users_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+
+  
+
+ 
+
+

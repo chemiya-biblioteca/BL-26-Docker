@@ -1,0 +1,13 @@
+paleta de comandos: docker add docker files-->java, 8080, no docker-compose
+maven-->package
+
+en el powersheel en la carpeta donde esta el dockerfile
+docker build -t helloworld_1 .
+docker images
+borrarla desde docker desktop
+//crear el contenedor asociado a la imagen
+docker run -d -p 8080:8080 helloworld_1
+docker ps
+docker run -d -p 8081:8080 --name helloworld_contenedor helloworld_1
+docker exec -it 2primerosid /bin/sh
+peticiones desde advanced rest client y funciona sping boot

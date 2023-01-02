@@ -1,0 +1,5 @@
+puedes hacer peticiones a los disitintos puertos y distintas apis desde advanced rest client
+si entras al contenedor de mysql, tendras dos databases
+docker exec -it 2id /bin/sh
+mysql -u root -p
+show databases;

@@ -1,0 +1,13 @@
+en la carpeta donde este el dockercompose
+para comprobar errores
+docker-compose build
+docker-compose up
+docker-compose ps
+se puede hacer peticion spring boot
+para solo arrancar uno del docker-compose
+docker-compose up nombre_en_docker-compose
+para entrar en el contenedor de mysql
+docker exec -it 2id /bin/sh 
+mysql -u root -p
+show databases;
+use una_database;

@@ -1,0 +1,16 @@
+URL http://localhost:1337
+guardar Kong con http://kong:8001
+services-add new services
+http://docker-compose-API:8080/requestmapping
+routes-add routes en service details
+path /api/quiero/
+metodos: get,post,put,delete,options
+protocolo http
+URL http://localhost:8000/api/quiero
+
+podemos ejecutar advanced rest client e insertar uno
+post   http://localhost:8000/api/usuarios
+
+cambiar en el angular la ruta por la nueva de kong y probar
+
+docker-compose: primero database,despues api
